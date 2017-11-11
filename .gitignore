@@ -1,0 +1,7 @@
+Additional_Material/
+Slides/
+
+*.aux
+*.log
+*.out
+*.pdf

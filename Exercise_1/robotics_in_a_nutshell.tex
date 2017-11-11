@@ -1,0 +1,69 @@
+%---------------------------------------------
+%---------------------------------------------
+%---------------------------------------------
+%---------------------------------------------
+\exercise{Robotics in a Nutshell}
+You are considering to buy a new multi-purpose robot platform. Its kinematic chain has two rotational $q_{\{1,3\}}$ and two linear $q_{\{2,4\}}$ degrees of freedom (DoFs), as shown in the figure below. These four joints are actuated with forces and torques of $u_i$, $i\in\{1,2,3,4\}$. A gripper is mounted on the end of the robot, indicated by the letter \textbf{E}. The robot's base is mounted on a table. We assume that the base Cartesian coordinates at the mount are $x_\textrm{base}=[0,0,0]$.  
+
+\begin{center}
+   %\includegraphics[width=0.35\textwidth]{fig/S-bot_B} 
+\end{center}
+
+
+\begin{questions}
+
+%----------------------------------------------
+
+\begin{question}{Forward Kinematics}{2}
+Compute the kinematic transformation in the global coordinate system from the base $\vec{x_\textrm{base}}$ to the end-effector \textbf{E}.  
+Write the solution for the $\vec{x_\textrm{end-eff}}=[x,y,z]^T$  according to the joint values $q_i$, where $i \in \{1,2,3,4\}$.
+
+\begin{answer}\end{answer}
+
+\end{question}
+
+%----------------------------------------------
+
+\begin{question}{Inverse Kinematics}{2}
+Define briefly in your own words the inverse kinematics problem in robotics.  
+Can we always accurately model the inverse kinematics of a robot with a
+function?
+
+\begin{answer}\end{answer}
+
+\end{question}
+
+%----------------------------------------------
+
+\begin{question}{Differential Kinematics}{4}
+Compute the Jacobian matrix $\vec{J}(\vec{q})$ of the robot such that $\dot{\vec{x}}=\vec{J}(\vec{q})\dot{\vec{q}}$, where $\dot{\vec{q}}$ is the first time derivatives of the state vector $\vec{q}$ of the robot. Explain in a sentence the physical meaning of the Jacobian. 
+
+\begin{answer}
+
+%TODO
+
+\end{answer}
+
+\end{question}
+
+%----------------------------------------------
+
+\begin{question}{Singularities}{3}
+What is the kinematic singularity in robotics? How can you detect it? When does our robotic arm, which was defined above, enter a kinematic singularity?
+
+\begin{answer}\end{answer}
+
+\end{question}
+
+%----------------------------------------------
+
+\begin{question}{Workspace}{1}
+If your task is to sort items placed on a table, would you buy this robot? Briefly justify your answer.
+
+\begin{answer}
+We wouldn't buy this robot because its workspace is a plane, parallel to the table(distance L1). So since the robot can't reach any point outside his workspace it isn't able to reach the tableplate. So it can't do it's purpose and therefor is not a good buy for this task.
+\end{answer}
+
+\end{question}
+
+\end{questions}

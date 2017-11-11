@@ -1,0 +1,76 @@
+\exercise{Control}
+In robotic locomotion it is common to abstract from the robot by using inverted pendulum models.
+In this exercise we will use a planar double inverted pendulum to test different control strategies. Our robot can be controlled by specifying the torque $\mathbf{u}=[u_1, u_2]$ of its motors. Consider that in mechanical systems the torque $\vec{u}$ is a function of the joint positions $\vec{q}$, velocities $\dot{\vec{q}}$ and accelerations $\ddot{\vec{q}}$, as given by  
+\[
+\vec{u}=\vec{M}(\vec{q})\ddot{\vec{q}}+\vec{c}(\vec{q},\dot{\vec{q}})+\vec{g}(\vec{q}), 
+\] 
+where $\vec{M}$ denotes the inertial matrix, $\vec{c}(\vec{q},\dot{\vec{q}})$ the Coriolis and centripetal forces, and $\vec{g}$ the gravity terms. In the following exercises assume that these terms are given.
+
+For the programming exercises you will use the attached code. 
+We provide skeletons for controlling the system either in joint space (\texttt{my\_ctl.py}) or in task space (\texttt{my\_taskSpace\_ctl.py}) and a basic functionality for plotting. You can invoke either mode by running \texttt{jointCtlComp.py} or \texttt{taskCtlComp.py} respectively. 
+Attach a printout with plots and a snippet of your source code for each programming exercise. 
+
+\begin{questions}
+	
+	%----------------------------------------------
+	
+	\begin{question}{PID Controller}{2}
+		What is the form of a proportional-integral-derivative (PID) controller and how could you use it to control a robot, i.e. what physical quantities could you control? Name one positive and one negative aspect of PID controllers.
+		
+\begin{answer}\end{answer}
+		
+	\end{question}
+	
+	%----------------------------------------------
+		
+	\begin{question}{Gravity Compensation and Inverse Dynamics Control}{4}
+		Suppose that you would like to create a control law to set the joint angles on the double inverted pendulum model by controlling the torque of the motors. Write a feedback control law which additionally gravity compensates and then extend it to full inverse dynamics control. 
+		
+\begin{answer}\end{answer}
+		
+	\end{question}
+	
+	%----------------------------------------------
+	
+	\begin{question}{Comparison of Different Control Strategies}{12}
+		In the following exercise you will investigate the differences of the following control algorithms, P, PID, PD with gravity compensation, and full inverse dynamics.
+		The double pendulum is initiated hanging down, with state $\vec{q_\textrm{start}}={[-\pi,0]}$. We simulate the system with a time-step $dt=0.002$ seconds using symplectic Euler integration and run the simulation for $t_\textrm{end}=3s$. 
+		
+		Implement the control laws by filling the skeleton file \texttt{my\_ctl.py}. Use the following feedback gains $K_P=60, K_D=10, K_I=0.1$ for the first joint and $K_P=30, K_D=6, K_I=0.1$ for the second one.
+		The target state of the double pendulum is set to $\vec{q_\textrm{des}}={[-\pi / 2,0]}$. 
+		
+		Create (max. 4) plots that compare the different control strategies and analyze the results. It is your choice how to illustrate your results. In your analysis you should include a discussion on the overall performance of each controller. Which controllers manage to go to the desired point, and how does the choice of a controller affects the behavior of the second joint of the pendulum? Additionally discuss which controller you would choose and why. The provided code is able to generate plot but feel free to modify it if you like. Points will be deducted for confusing plots. Do not forget to include your source code in your solutions.
+		
+\begin{answer}\end{answer}
+		
+	\end{question}
+	
+	%----------------------------------------------
+	
+	\begin{question}{Tracking Trajectories}{4}
+		Repeat the same experiment but this time use the provided time-varying target trajectory. Create (max 4) plots that compare the different control strategies and analyze the results. In your analysis discuss the overall performance and which controllers track the desired trajectory nicely. Additionally discuss which controller you would choose and why.
+		
+\begin{answer}\end{answer}
+		
+	\end{question}
+	
+	%----------------------------------------------
+	
+	\begin{question}{Tracking Trajectories --- High Gains}{4}
+		Repeat the same experiment (using the provided trajectory) but this time multiply the gains by ten. Create plots that compare the different control strategies and analyze the results. In your analysis discuss the overall performance and compare it to the previous case. Are there any drawbacks of using high gains?
+		
+\begin{answer}\end{answer}
+		
+	\end{question}
+	
+	%----------------------------------------------
+	
+	\begin{question}[bonus]{Task Space Control}{5}
+		The robot must now reach a desired position in task space $\vec{x_\textrm{end}}={[-0.35,1.5]}$. In class we derived the Jacobian transpose, Jacobian pseudo-inverse, and Jacobian pseudo-inverse with damping methods. All of them are implemented in \texttt{my\_taskSpace\_ctl.py}. You are asked to implement also the null-space task prioritization method with a null-space resting posture $\vec q=[0,\pi]$. Run the simulation and plot the initial and final configuration of the robot. Then, change the resting posture to $\vec q=[0,-\pi]$ and redo the plots. Analyze in a couple of sentences your observation. Use the same damping coefficient $10^{-6}$ and include a code snippet to your solutions.
+		
+\begin{answer}\end{answer}
+		
+	\end{question}
+	
+\end{questions}
+
