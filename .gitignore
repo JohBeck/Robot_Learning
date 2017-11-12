@@ -5,3 +5,4 @@ Slides/
 *.log
 *.out
 *.pdf
+*..synctex.gz
