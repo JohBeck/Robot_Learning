@@ -5,12 +5,13 @@ https://github.com/JohBeck/Robot_Learning.git
 
 
 copy to local machine:
+
 `git clone https://username:password@github.com/JohBeck/Robot_Learning.git`
+
 
 to commit new stuff:
 
 `git commit -m 'description of new stuff'`
-
 
 
 to push (upload) new stuff:
@@ -21,7 +22,7 @@ to push (upload) new stuff:
 
 # Don't do that:
 
-Files for Learning Robot Lecture
+Files for Robot_Learning:
 
 `git init` and then `git remote add origin https://github.com/JohBeck/Robot_Learning.git`
 
