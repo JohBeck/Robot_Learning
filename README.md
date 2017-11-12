@@ -5,7 +5,7 @@ https://github.com/JohBeck/Robot_Learning.git
 
 
 copy to local machine:
-`git clone ssh://git@github.com/JohBeck/Robot_Learning.git`
+`git clone https://username:password@github.com/JohBeck/Robot_Learning.git`
 
 
 # Don't do that:
