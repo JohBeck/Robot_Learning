@@ -19,7 +19,7 @@ Compute the kinematic transformation in the global coordinate system from the ba
 Write the solution for the $\vec{x_\textrm{end-eff}}=[x,y,z]^T$  according to the joint values $q_i$, where $i \in \{1,2,3,4\}$.
 
 \begin{answer}
-Thekinematic transformation in global coordinates from  $\vec{x_\textrm{base}}$ to the end-effector \textbf{E} can be computed and simplyfied to
+The kinematic transformation in global coordinates from  $\vec{x_\textrm{base}}$ to the end-effector \textbf{E} can be computed and simplyfied to
 \begin{align*}
 ~^\textrm{base}\!T_{\textrm{end-eff}} &= 
 %\begin{bmatrix}
@@ -44,8 +44,7 @@ With that the position of the end-efector $\vec{x_\textrm{end-eff}}=[x,y,z]^T$ r
 \vec{x_\textrm{end-eff}}=[x,y,z]^T = \begin{bmatrix}
 \cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})\textrm{q}_{\textrm{4}} + \cos(\textrm{q}_{\textrm{1}})\textrm{q}_{\textrm{2}} \\
 \sin(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})\textrm{q}_{\textrm{4}} + \sin(\textrm{q}_{\textrm{1}})\textrm{q}_{\textrm{2}} \\
-\textrm{l}_{\textrm{1}} \\
-1 
+\textrm{l}_{\textrm{1}} 
 \end{bmatrix}
 \end{align*}.
 
@@ -59,7 +58,12 @@ Define briefly in your own words the inverse kinematics problem in robotics.
 Can we always accurately model the inverse kinematics of a robot with a
 function?
 
-\begin{answer}\end{answer}
+\begin{answer}
+The problem with the inverse kinematics is that the calculation for the parameters is very costly because you have to solve a non-linear equation system each step. Often there are multiple possible positions for the robot to reach the wanted position, sothe end-effector \textbf{E}	
+
+The problem with the inverse kinematics is that often there are multiple possible ways for the robot to reach the goal.
+
+\end{answer}
 
 \end{question}
 
