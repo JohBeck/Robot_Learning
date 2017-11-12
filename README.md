@@ -3,6 +3,11 @@ https://github.com/JohBeck/Robot_Learning.git
 
 # Robot_Learning
 
+
+copy to local machine:
+`git clone https://github.com/JohBeck/Robot_Learning.git`
+
+
 Files for Learning Robot Lecture
 
 `git init` and then `git remote add origin https://github.com/JohBeck/Robot_Learning.git`
