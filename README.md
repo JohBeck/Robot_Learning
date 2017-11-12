@@ -9,6 +9,11 @@ copy to local machine:
 `git clone https://username:password@github.com/JohBeck/Robot_Learning.git`
 
 
+get the new stuff from the others...
+
+`git pull`
+
+
 to commit new stuff:
 
 `git commit -m 'description of new stuff'`
