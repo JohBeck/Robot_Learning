@@ -31,22 +31,22 @@ The kinematic transformation in global coordinates from  $\vec{x_\textrm{base}}$
 %\cdot [...]\\ 
 %TODO: restliche Matrizen auch aufschreiben?
 \begin{bmatrix}
-\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) & -\sin(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})& 0 & \textrm{q}_{\textrm{4}}\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) + \textrm{q}_{\textrm{2}}\cos(\textrm{q}_{\textrm{1}}) \\
-\sin(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) &\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})  & 0 & \textrm{q}_{\textrm{4}}\sin(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) + \textrm{q}_{\textrm{2}}\sin(\textrm{q}_{\textrm{1}}) \\
-0 & 0 & 1 & \textrm{l}_{\textrm{1}} \\
+\cos(q_{\textrm{1}}+q_{\textrm{3}}) & -\sin(q_{\textrm{1}}+q_{\textrm{3}})& 0 & q_{\textrm{4}}\cos(q_{\textrm{1}}+q_{\textrm{3}}) + q_{\textrm{2}}\cos(q_{\textrm{1}}) \\
+\sin(q_{\textrm{1}}+q_{\textrm{3}}) &\cos(q_{\textrm{1}}+q_{\textrm{3}})  & 0 & q_{\textrm{4}}\sin(q_{\textrm{1}}+q_{\textrm{3}}) + q_{\textrm{2}}\sin(q_{\textrm{1}}) \\
+0 & 0 & 1 &l_{\textrm{1}} \\
 0 & 0 & 0 & 1 
-\end{bmatrix}
-\end{align*}.
+\end{bmatrix}.
+\end{align*}
 
 With that the position of the end-efector $\vec{x_\textrm{end-eff}}=[x,y,z]^T$ results to
 
 \begin{align*}
 \vec{x_\textrm{end-eff}}=[x,y,z]^T = \begin{bmatrix}
-\textrm{q}_{\textrm{4}}\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) + \textrm{q}_{\textrm{2}}\cos(\textrm{q}_{\textrm{1}}) \\
-\textrm{q}_{\textrm{4}}\sin(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) + \textrm{q}_{\textrm{2}}\sin(\textrm{q}_{\textrm{1}}) \\
-\textrm{l}_{\textrm{1}} 
-\end{bmatrix}
-\end{align*}.
+q_{\textrm{4}}\cos(q_{\textrm{1}}+q_{\textrm{3}}) + q_{\textrm{2}}\cos(q_{\textrm{1}}) \\
+q_{\textrm{4}}\sin(q_{\textrm{1}}+q_{\textrm{3}}) + q_{\textrm{2}}\sin(q_{\textrm{1}}) \\
+l_{\textrm{1}} 
+\end{bmatrix}.
+\end{align*}
 
 \end{answer}
 \end{question}
@@ -54,14 +54,13 @@ With that the position of the end-efector $\vec{x_\textrm{end-eff}}=[x,y,z]^T$ r
 %----------------------------------------------
 
 \begin{question}{Inverse Kinematics}{2}
-Define briefly in your own words the inverse kinematics problem in robotics.  
-Can we always accurately model the inverse kinematics of a robot with a
-function?
+Define briefly in your own words the inverse kinematics problem in robotics. Can we always accurately model the inverse kinematics of a robot with a function?
 
 \begin{answer}
-The problem with the inverse kinematics is that the calculation for the parameters is very costly because you have to solve a non-linear equation system each step. This is why in a lot of cases the only way to solve this is a numerical solution but not a analytical(funciton). Also there are often multiple possible solutions for a robot to reach a specific position. So therefor a solution in form of a function isn't even possible.
-\end{answer}
+The problem with the inverse kinematics problem in robotics is that the calculation for the parameters is very costly. That's because you have to solve a non-linear equation system for each step in the calculation. Finding an analytical solution for a problem is not possible in most use cases, due to the fact that a robot can reach a joint configuration in multiple ways, meaning the analytical function should have multiple solutions.Therefore most solvers use a numerical approach which approximates the derivation of the function for every given time step.
+%TODO: O(n)?
 
+\end{answer}
 \end{question}
 
 %----------------------------------------------
@@ -76,21 +75,29 @@ For the differential kinematics we can compute the Jacobian matrix to
 %Jacobian
 \begin{bmatrix}
 % X --------------------------
--\textrm{q}_{\textrm{4}}\sin(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) + \textrm{q}_{\textrm{2}}\sin(\textrm{q}_{\textrm{1}}) &
-\cos(\textrm{q}_{\textrm{1}}) &
--\textrm{q}_{\textrm{4}}\sin(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})&
-\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})\\
+-q_{\textrm{4}}\sin(q_{\textrm{1}}+q_{\textrm{3}}) + q_{\textrm{2}}\sin(q_{\textrm{1}}) &
+\cos(q_{\textrm{1}}) &
+-q_{\textrm{4}}\sin(q_{\textrm{1}}+q_{\textrm{3}})&
+\cos(q_{\textrm{1}}+q_{\textrm{3}})\\
 % Y --------------------------
-\textrm{q}_{\textrm{4}}\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}}) + \textrm{q}_{\textrm{2}}\cos(\textrm{q}_{\textrm{1}})&
-\sin(\textrm{q}_{\textrm{1}})&
-\textrm{q}_{\textrm{4}}\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})&
-\cos(\textrm{q}_{\textrm{1}}+\textrm{q}_{\textrm{3}})\\
+q_{\textrm{4}}\cos(q_{\textrm{1}}+q_{\textrm{3}}) + q_{\textrm{2}}\cos(q_{\textrm{1}})&
+\sin(q_{\textrm{1}})&
+q_{\textrm{4}}\cos(q_{\textrm{1}}+q_{\textrm{3}})&
+\cos(q_{\textrm{1}}+q_{\textrm{3}})\\
 % Z --------------------------
 0 & 0 & 0 & 0 
 \end{bmatrix}
 \end{align*}
 for $\dot{\vec{x}}=\vec{J}(\vec{q})\dot{\vec{q}}$.
-%TODO: Describe what the jacobian does
+The rows of the Jacobian Matrix represent the translatory change of the origin of the effect coordinate systems or more precisely the change of the direction through differential changes of the joint variable $q_j$.
+
+\begin{align*}
+	\begin{bmatrix}
+	\dfrac{\delta x }{ \delta q_j} & \dfrac{\delta y}{ \delta q_j} & \dfrac{\delta z}{\delta q_j}
+	\end{bmatrix}^\textbf{T}
+\end{align*}
+
+
 
 \end{answer}
 
@@ -102,8 +109,8 @@ for $\dot{\vec{x}}=\vec{J}(\vec{q})\dot{\vec{q}}$.
 What is the kinematic singularity in robotics? How can you detect it? When does our robotic arm, which was defined above, enter a kinematic singularity?
 
 \begin{answer}
-So called kinematic singularities are positions, where the colums of the jabobian matrix become linear dependent. This leads to a loss of degrees of freedom %TODO: Not finished yet
-
+	Kinematic singularities are joint configurations, where either the movement in a certain direction isn't possible or whenever forces or velocities get infinite big. They appear for example at the border of the workspace or whenever there are redundant movements so that you can move one joint without changing the position and orientation of the end-effector. This leads to a loss of degrees of freedom in the Jacobian matrix due to linear dependencies in the columns of the Jacobian. Based on this effect you can "simply" check for which joint configurations the Jacobian loses degrees of freedom to detect singularities.
+	The above defined robot arm enters kinematic singularities when it operates at the border of its workspace. On this circle he can't move any further away from its base point and loses the degree of freedom pointed in this direction.
 \end{answer}
 
 \end{question}
@@ -114,7 +121,7 @@ So called kinematic singularities are positions, where the colums of the jabobia
 If your task is to sort items placed on a table, would you buy this robot? Briefly justify your answer.
 
 \begin{answer}
-We wouldn't buy this robot because its workspace is a plane, parallel to the table(distance L1). So since the robot can't reach any point outside his workspace it isn't able to reach the tableplate. So it can't do it's purpose and therefor is not a good buy for this task.
+We wouldn't buy this robot because its workspace is a plane parallel to the table with distance $L_1$ to the surface. Due to the fact that the robot can only work within his workspace, he isn't able to reach the table plate. Therefore it can't accomplish its purpose and will not serve well for this task. This changes, if we want to sort items with heights greater than $L_1$. But even now, with the robot able to reach items, we wouldn't buy this robot, because it will be hard to place items behind others and there will always be a minimum distance to all sorted items on the table.
 \end{answer}
 
 \end{question}

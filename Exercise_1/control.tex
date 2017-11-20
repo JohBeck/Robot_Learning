@@ -19,9 +19,15 @@ Attach a printout with plots and a snippet of your source code for each programm
 		
 \begin{answer}
 form: \begin{align*}
-	u=K_{p} (q_{des} - q) + K_{D} (\dot{q_{des}} - \dot{q}) + K_{I} \int_{-\infty}^{t}(q_{des} - q)\textrm{d}\tau
+	u=K_{\textrm{p}} (q_{\textrm{des}} - q) + K_{\textrm{D}} (\dot{q_{\textrm{des}}} - \dot{\textrm{q}}) + K_{\textrm{I}} \int_{-\infty}^{t}(q_{\textrm{des}} - q)\textrm{d}\tau
 \end{align*}
-%TODO:pretty much everything
+%TODO:form sentences
+
+P -> now error\\
+I -> accumulation of past errors\\
+D -> prediction for future error(based on the current rate of change)\\
+ positiv: Nuetzlich falls kein gutes model bekannt ist.\\
+ negativ: pendelt um gewuenschte position wegen numerischer loesung\\
 \end{answer}
 		
 	\end{question}
