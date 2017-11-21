@@ -16,6 +16,7 @@ from math import pi, sin, cos
 from simSys import *
 from DoubleLink import *
 from matplotlib import pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
 
 
 def jointCtlComp(ctls=['P'], isSetPoint=False, pauseTime=False):
@@ -49,29 +50,33 @@ def jointCtlComp(ctls=['P'], isSetPoint=False, pauseTime=False):
 
 # Just a way to plot, feel free to modify!
 def traj_plot(states, colors, numContrlComp, ctls, q_desired, qd_desired, time, plotVel):
-    if plotVel:
-        y = qd_desired
-    else:
-        y = q_desired
+    with PdfPages('Model-Based-traj ' + str(plotVel) + '.pdf') as pdf:
 
-    plt.figure()
-    plt.hold(True)
+        if plotVel:
+            y = qd_desired
+        else:
+            y = q_desired
 
-    h = plt.plot(time, y, linewidth=2)
-    plt.draw()
-    plt.setp(h[0], 'LineStyle', '-.')
-    plt.setp(h[1], 'LineStyle', '-.')
-    names = ['Desired_1', 'Desired_2']
+        plt.figure()
+        plt.hold(True)
 
-    for k in range(numContrlComp):
-        names += [ctls[k] + '_1', ctls[k] + '_2']
-        plt.plot(time, states[:, plotVel::2], linewidth=2)
+        h = plt.plot(time, y, linewidth=2)
+        plt.draw()
+        plt.setp(h[0], 'LineStyle', '-.')
+        plt.setp(h[1], 'LineStyle', '-.')
+        names = ['Desired_1', 'Desired_2']
 
-    plt.legend(tuple(names))
-    plt.xlabel('time(s)', fontsize=15)
-    plt.ylabel('angle (rad)', fontsize=15)
+        for k in range(numContrlComp):
+            names += [ctls[k] + '_1', ctls[k] + '_2']
+            plt.plot(time, states[:, plotVel::2], linewidth=2)
 
-    if plotVel:
-        plt.title('Velocity', fontsize=20)
-    else:
-        plt.title('Position', fontsize=20)
+        plt.legend(tuple(names))
+        plt.xlabel('time(s)', fontsize=15)
+        plt.ylabel('angle (rad)', fontsize=15)
+
+        if plotVel:
+            plt.title('Velocity', fontsize=20)
+        else:
+            plt.title('Position', fontsize=20)
+        pdf.savefig()
+
