@@ -16,7 +16,7 @@ def my_ctl(ctl, q, qd, q_des, qd_des, qdd_des, q_hist, q_deshist, gravity, corio
     #  K_P = 30, K_L = 0.1, q_des = [-pi/2,0]
     K_P = np.diag([60, 30])
     K_D = np.diag([10, 6])
-    K_I = [0.1, 0.1]
+    K_I = np.mat([0.1, 0.1])
     if ctl == 'P':
         # u_t = K_P(q_des-q)
         u = K_P.dot((np.mat(q_des).T - np.mat(q).T))

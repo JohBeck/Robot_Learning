@@ -12,7 +12,7 @@ jointCtlComp(['ModelBased'], True)
 
 # jointCtlComp(['P'], False)
 # jointCtlComp(['PD'], False)
-# jointCtlComp(['PID'], False)
+jointCtlComp(['PID'], False)
 # jointCtlComp(['PD_Grav'], False)
 # jointCtlComp(['ModelBased'], False)
 
