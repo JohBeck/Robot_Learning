@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 import time
 
 
-def simSys(robot, dt, nSteps, ctls, target, pauseTime=False, resting_pos=None):
+def simSys(robot, dt, nSteps, ctls, target, pauseTime=0.05, resting_pos=None):
     states = np.zeros((nSteps * len(ctls), robot.dimState))
     states[:: nSteps, ::2] = np.tile([-pi, 0], (len(ctls), 1))
 
