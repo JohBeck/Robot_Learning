@@ -25,12 +25,13 @@ def my_ctl(ctl, q, qd, q_des, qd_des, qdd_des, q_hist, q_deshist, gravity, corio
         u = np.dot(K_P, (np.mat(q_des).T - np.mat(q).T)) + np.dot(K_D, (np.mat(qd_des).T - np.mat(qd).T))
     elif ctl == 'PID':
         # u_t = K_P(q_des-q)+K_D(qd_des-qd)+K_I*all-time steps
-        u = K_P * (np.mat(q_des).T - np.mat(q).T) + K_D * (np.mat(qd_des).T - np.mat(qd).T) + K_I * (q_hist-q_deshist)
+        u = K_P * (np.mat(q_des).T - np.mat(q).T) + K_D * (np.mat(qd_des).T - np.mat(qd).T) + K_I * np.trapz(np.mat(q_deshist-q_hist).T)
     elif ctl == 'PD_Grav':
         # u_t = K_P(q_des-q)+K_D(qd_des-qd)+g(q)
         u = K_P * (np.mat(q_des).T - np.mat(q).T) + K_D * (np.mat(qd_des).T - np.mat(qd).T) + np.mat(gravity).T
     elif ctl == 'ModelBased':
         # u = M(q)*qdd_ref+c(qd,q) + g(q)
         # qdd_ref = qdd_des+K_D(qd_des-qd)+K_P(q_des-q)
-        u = np.zeros((2, 1))  # TODO Implement your controller here
+        qdd_ref = np.mat(qdd_des).T+K_D*(np.mat(qd_des).T-np.mat(qd).T) + K_P * (np.mat(q_des).T - np.mat(q).T)
+        u = M * qdd_ref + np.mat(coriolis).T + np.mat(gravity).T
     return u
