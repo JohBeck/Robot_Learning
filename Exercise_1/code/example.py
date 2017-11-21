@@ -9,10 +9,12 @@ jointCtlComp(['PD_Grav'], True)
 jointCtlComp(['ModelBased'], True)
 
 # Same controller, but this time the robot has to follow a fixed trajectory.
+
 jointCtlComp(['P'], False)
 jointCtlComp(['PD'], False)
 jointCtlComp(['PID'], False)
 jointCtlComp(['PD_Grav'], False)
+
 jointCtlComp(['ModelBased'], False)
 
 # Controller in the task space.

@@ -3,6 +3,6 @@ Additional_Material/
 *.aux
 *.log
 *.out
-*.pdf
 *.synctex.gz
 Exercise_1/homework.synctex.gz
+homework.pdf
