@@ -100,7 +100,8 @@ PID controllers are useful if the robot model is to complex or not known but on 
 \includegraphics[width=.32\linewidth]{figures/Model-Based-traj0.pdf}
 	\end{center}
 
-While tracking the trajectory, all controllers behave in a similar way. the all oscilate around the wanted curve. The difference between them is very small, so even the PD controller which performed very well in the last task can't trace the trajectory very well. This behaviour is actually pretty bad compared to a model based controller, which fits the curve nearly perfect after just a little over half a second.
+While tracking the trajectory, all controllers behave in a similar way. They all 
+oscillate around the wanted curve. The difference between them is very small, so even the PD controller which performed very well in the last task can't trace the trajectory very well. This behaviour is actually pretty bad compared to a model based controller, which fits the curve nearly perfect after just a little over half a second. So here the model based would be the one to use becuase it's far better in tracking the curve. If there is no model based controller you can pretty mch choose any of the above controller for this problem, because they all behave similar bad.
 \end{answer}
 		
 	\end{question}
