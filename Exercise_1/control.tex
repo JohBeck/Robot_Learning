@@ -94,10 +94,10 @@ PID controllers are useful if the robot model is to complex or not known but on 
 		
 \begin{answer}
 	\begin{center}
-\includegraphics[width=.32\linewidth]{figures/P-traj0.pdf}
-\includegraphics[width=.32\linewidth]{figures/PD-traj0.pdf}\\
-\includegraphics[width=.32\linewidth]{figures/PID-traj0.pdf}
-\includegraphics[width=.32\linewidth]{figures/Model-Based-traj0.pdf}
+\includegraphics[width=.32\linewidth]{figures/traj/P-traj0.pdf}
+\includegraphics[width=.32\linewidth]{figures/traj/PD-traj0.pdf}\\
+\includegraphics[width=.32\linewidth]{figures/traj/PID-traj0.pdf}
+\includegraphics[width=.32\linewidth]{figures/traj/Model-Based-traj0.pdf}
 	\end{center}
 
 While tracking the trajectory, all controllers behave in a similar way. They all 
@@ -112,7 +112,14 @@ oscillate around the wanted curve. The difference between them is very small, so
 		Repeat the same experiment (using the provided trajectory) but this time multiply the gains by ten. Create plots that compare the different control strategies and analyze the results. In your analysis discuss the overall performance and compare it to the previous case. Are there any drawbacks of using high gains?
 		
 \begin{answer}
-%TODO
+	\begin{center}
+		\includegraphics[width=.32\linewidth]{figures/traj/P-gain-0.pdf}
+		\includegraphics[width=.32\linewidth]{figures/traj/P-gain-1.pdf}\\
+		\includegraphics[width=.32\linewidth]{figures/traj/PD-gain-0.pdf}
+		\includegraphics[width=.32\linewidth]{figures/traj/PD-gain-1.pdf}
+	\end{center}
+With higher gains, it's easier to overshoot the target, that's easy to see with the P-Control, while trying to get closer to the target, the difference and velocity increases. PD-, PD-Gravity- and PID control look fairly similar to each other, but have a way better approximation of the desired values than the controls without the gain. But one important note is the velocity in all of these controllers. The complete red part in the beginning of the controlled sequence is hanging rapidly. That's bad for both, analysis and real parts, that means that huge gains are costly, make the robot very stiff and dangerous.
+
 \end{answer}
 		
 	\end{question}
