@@ -13,7 +13,7 @@ from taskCtlComp import *
 # jointCtlComp(['PD'], False)
 # jointCtlComp(['PID'], False)
 # jointCtlComp(['PD_Grav'], False)
-# jointCtlComp(['ModelBased'], False)
+jointCtlComp(['ModelBased'], False)
 
 # Controller in the task space.
 # taskCtlComp(['JacNullSpace'], resting_pos=np.mat([0, pi]).T)

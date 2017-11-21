@@ -50,7 +50,7 @@ def jointCtlComp(ctls=['P'], isSetPoint=False, pauseTime=False):
 
 # Just a way to plot, feel free to modify!
 def traj_plot(states, colors, numContrlComp, ctls, q_desired, qd_desired, time, plotVel):
-    with PdfPages('Model-Based-traj ' + str(plotVel) + '.pdf') as pdf:
+    with PdfPages('../figures/Model-Based-traj ' + str(plotVel) + '.pdf') as pdf:
 
         if plotVel:
             y = qd_desired
