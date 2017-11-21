@@ -46,6 +46,7 @@ def jointCtlComp(ctls=['P'], isSetPoint=False, pauseTime=False):
     traj_plot(states, colors, numContrlComp, ctls, target['q'], target['qd'], time, 1)
     plt.pause(0.001)
 
+
 # Just a way to plot, feel free to modify!
 def traj_plot(states, colors, numContrlComp, ctls, q_desired, qd_desired, time, plotVel):
     if plotVel:
