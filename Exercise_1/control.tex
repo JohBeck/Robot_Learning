@@ -18,16 +18,17 @@ Attach a printout with plots and a snippet of your source code for each programm
 		What is the form of a proportional-integral-derivative (PID) controller and how could you use it to control a robot, i.e. what physical quantities could you control? Name one positive and one negative aspect of PID controllers.
 		
 \begin{answer}
-form: \begin{align*}
+A PID controller comes in the form of: \begin{align*}
 	u=K_{\textrm{p}} (q_{\textrm{des}} - q) + K_{\textrm{D}} (\dot{q_{\textrm{des}}} - \dot{\textrm{q}}) + K_{\textrm{I}} \int_{-\infty}^{t}(q_{\textrm{des}} - q)\textrm{d}\tau
 \end{align*}
 %TODO:form sentences
-
-P -> now error\\
-I -> accumulation of past errors\\
-D -> prediction for future error(based on the current rate of change)\\
- positiv: Nuetzlich falls kein gutes model bekannt ist.\\
- negativ: pendelt um gewuenschte position wegen numerischer loesung\\
+With $K_P$ representing the error at the Moment, $K_I$ an accumulation of the past errors and $K_D$ a predictor for future errors based on the current rate of change. 
+PID controllers are useful if the robot model is to complex or not known but on the other hand, the end effector will not move to the perfect spot, but will perform a pendulum movement.
+%P -> now error\\
+%I -> accumulation of past errors\\
+%D -> prediction for future error(based on the current rate of change)\\
+% positiv: Nuetzlich falls kein gutes model bekannt ist.\\
+% negativ: pendelt um gewuenschte position wegen numerischer loesung\\
 \end{answer}
 		
 	\end{question}

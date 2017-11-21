@@ -15,7 +15,7 @@ def simSys(robot, dt, nSteps, ctls, target, pauseTime=False, resting_pos=None):
         fig = plt.figure()
         ax = fig.add_subplot(111, autoscale_on=False, xlim=(-2.5, 2.5), ylim=(-2.5, 2.5))
         plt.plot(2 * np.array([-1.1, 1.1]), np.array([0, 0]), 'b--')
-        line, = ax.plot([], [], 'o-', lw=2, color='k' ,markerfacecolor='w', markersize=12)
+        line, = ax.plot([], [], 'o-', lw=2, color='k', markerfacecolor='w', markersize=12)
         plt.xlabel('x-axis [m]', fontsize=15)
         plt.ylabel('y-axis [m]', fontsize=15)
 
