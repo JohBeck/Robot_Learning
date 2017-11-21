@@ -17,14 +17,8 @@ You are allowed to use \texttt{scipy.spatial.distance.cdist} and \texttt{scipy.e
 
 \begin{answer}
 	
-	For supervised learning you learn by examples with solutions. so beside you trainings set there is also the "solutions" or the correct matches provided. Examples for super vised learning are for example clustering tasks.
-	Unsupervised learning on the other side is based on only a dataset without any further information. So the alghorithm has to learn all by himself how to "get along with the data"%TODO
-	Based on this the above is a supervised öearning problem, because the data
-	
-unsupervised/descriptive learning:like clustering dimensionality reduction desity stimation
-
-predictive/supervised: classification regression
-
+	In supervised learning the algorithm learns from examples with solutions. Both input and output data are provided meaning the algorithm can learn by comparing new values with already learned data. Possible usecases could be clustering tasks.
+	On the other side unsupervised learning is based on only one dataset without any further information. Here only the input data is provided and the algorithm has to learn all by himself. Based on this the above example is a supervised learning problem, due to the fact that the training set also provides the desired values for the given task. The algorithm is learning based on these existing results and not only from input data
 
 \end{answer}
 	\end{question}
@@ -37,12 +31,8 @@ predictive/supervised: classification regression
 		Briefly explain what are the differences between regression and classification.
 		
 \begin{answer}
-	regression tasks: predict a future state starting from the current situation %expected output, never mind how likely it is
-	
-	clasification tasks: you cluster the data in groups %most likely, never mind whats expected
-	
-	%TODO: On Slides_03 page 19
-	
+Regression tasks predict a future state starting from the current situation and output continuous values.
+Classification tasks cluster the data in groups and output them as class labels.
 \end{answer}
 \end{question}
 	

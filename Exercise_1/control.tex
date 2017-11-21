@@ -60,29 +60,15 @@ PID controllers are useful if the robot model is to complex or not known but on 
 		
 \begin{answer}
 	\begin{center}
-	\includegraphics[width=.32\linewidth]{figures/P-Regler0.pdf}
-	\includegraphics[width=.32\linewidth]{figures/PD-Regler0.pdf}\\
-	\includegraphics[width=.32\linewidth]{figures/PD-Grav-Regler0.pdf}
-	\includegraphics[width=.32\linewidth]{figures/PID-Regler0.pdf}
+	\includegraphics[width=.32\linewidth]{figures/P-0.pdf}
+	\includegraphics[width=.32\linewidth]{figures/PD-0.pdf}\\
+	\includegraphics[width=.32\linewidth]{figures/PD-Gravity-0.pdf}
+	\includegraphics[width=.32\linewidth]{figures/PID-0.pdf}
 	%\includegraphics[width=.4\linewidth]{figures/Model-Based-Regler1.pdf}
 \end{center}
-	The results show that neither the P-controller nor the PID-controller reach the second desired position in the given time frame, on the other hand, it's easy to see that P controller takes a long time to get into the right position, even more it oversteers its destination by way more than the others. The PD controller gets fast to near zero velocity but stays obviously a little bit under his desired position. That's due to gravity, to compensate that the PD-Gravity controller comes with an extra term of $g(q)$. Its velocity gets as fast to zero as PD but it reaches the destination point. PID is far slower than PD but does not have such high overshoot like P-control. In PID control the difference between PD-1 and PD-2 seem bigger than within the others. But nevertheless, we would choose PID for some tasks due to its slowness, parts of the robot won't wear off this quick. Sometimes a slower robot is better than nothing, but in some situations it's essential to have a quick responsive robot. In these scenarios we would recommend to use a PD-Gravity controller, because it quickly approaches its destination and has little overshoot.
-	%TODO: references
-%\begin{figure}[h]
-%\begin{subfigure}%{width=.5\linewidth}
-%	\centering
-%	\includegraphics[width=.5\linewidth]{figures/P-Regler0.pdf}
-%	\caption{Velocity Plot of a P-controller}
-%	\label{P-Control}
-%\end{subfigure}
-%\begin{subfigure}%{width=.5\linewidth}
-%	\centering
-%	\includegraphics[width=.5\linewidth]{figures/PD-Regler0.pdf}
-%	\caption{Velocity Plot of a PD-controller}
-%	\label{PD-Control}
-%\end{subfigure}
-%	\caption{Velocitiy Plots of different controller}
-%\end{figure}
+	The results show that neither the P-controller nor the PID-controller reach the second desired position in the given time frame, on the other hand, it's easy to see that P controller takes a long time to get into the right position, even more it oversteers its destination by way more than the others. The PD controller gets fast to near zero velocity but stays obviously a little bit under his desired position. That's due to gravity, to compensate that the PD-Gravity controller comes with an extra term of $g(q)$. Its velocity gets as fast to zero as PD but it reaches the destination point. PID is far slower than PD but does not have such high overshoot like P-control. In PID control the difference between PD-1 and PD-2 seem bigger than within the others. But nevertheless, we would choose PID for some tasks due to its slowness, parts of the robot won't wear off this quick. Sometimes a slower robot is better than nothing, but in some situations it's essential to have a quick responsive robot. In these scenarios we would recommend to use a PD-Gravity controller, because it quickly approaches its destination and has little overshoot. Our source Code can be found in the appendix
+
+\lstinputlisting[language=Python,firstline=14]{code/my_ctl.py}
 \end{answer}
 		
 	\end{question}
@@ -94,13 +80,13 @@ PID controllers are useful if the robot model is to complex or not known but on 
 		
 \begin{answer}
 	\begin{center}
-\includegraphics[width=.32\linewidth]{figures/traj/P-traj0.pdf}
-\includegraphics[width=.32\linewidth]{figures/traj/PD-traj0.pdf}\\
-\includegraphics[width=.32\linewidth]{figures/traj/PID-traj0.pdf}
-\includegraphics[width=.32\linewidth]{figures/traj/Model-Based-traj0.pdf}
+\includegraphics[width=.32\linewidth]{figures/traj/P-0.pdf}
+\includegraphics[width=.32\linewidth]{figures/traj/PD-0.pdf}\\
+\includegraphics[width=.32\linewidth]{figures/traj/PID-0.pdf}
+\includegraphics[width=.32\linewidth]{figures/traj/Model-Based-0.pdf}
 	\end{center}
 
-While tracking the trajectory, all controllers behave in a similar way. the all oscilate around the wanted curve. The difference between them is very small, so even the PD controller which performed very well in the last task can't trace the trajectory very well. This behaviour is actually pretty bad compared to a model based controller, which fits the curve nearly perfect after just a little over half a second.
+While tracking the trajectory, all controllers behave in a similar way, they all oscillate around the desired curve. The difference between them is very small, so even the PD controller which performed very well in the last task can't trace the trajectory very well. This behaviour is actually pretty bad compared to a model based controller, which fits the curve nearly perfect after just a little over half a second but since finding a model-based controller isn't always possible, we wouldn't recommend to use model-based controllers for all examples. We would rather stick to PD- or PID-controll due to the fact that they are more universal and it's hard to calculate model-based controls if it is a fairly complicated model.
 \end{answer}
 		
 	\end{question}
@@ -117,7 +103,7 @@ While tracking the trajectory, all controllers behave in a similar way. the all 
 		\includegraphics[width=.32\linewidth]{figures/traj/PD-gain-0.pdf}
 		\includegraphics[width=.32\linewidth]{figures/traj/PD-gain-1.pdf}
 	\end{center}
-With higher gains, it's easier to overshoot the target, that's easy to see with the P-Control, while trying to get closer to the target, the difference and velocity increases. PD-, PD-Gravity- and PID control look fairly similar to each other, but have a way better approximation of the desired values than the controls without the gain. But one important note is the velocity in all of these controllers. The complete red part in the beginning of the controlled sequence is hanging rapidly. That's bad for both, analysis and real parts, that means that huge gains are costly, make the robot very stiff and dangerous.
+Like the above graphs show, it's easier to overshoot the target with higher gains. That's easy to see with the P-Control, while trying to get closer to the target, difference and velocity increase. PD-, PD-Gravity- and PID control look fairly similar to each other, but approximate the desired values way better than the controls without increased gains. But one important note is the velocity in all of these controllers. The complete red part in the beginning of the controlled sequence is changing rapidly. That's bad for the components since the velocities would switch nonstop between maximum values in different directions. In conclusion huge gains are costly and make the robot very stiff and dangerous.
 
 \end{answer}
 		
