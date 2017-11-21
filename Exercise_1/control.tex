@@ -42,6 +42,7 @@ PID controllers are useful if the robot model is to complex or not known but on 
 	\begin{align*}
 		u_t=K_{\textrm{p}} (q_{\textrm{d}} - q_{\textrm{t}}) + K_{\textrm{D}} (\dot{q_{\textrm{d}}} - \dot{\textrm{q}_{\textrm{t}}}) + g(q)
 	\end{align*}
+	%TODO
 \end{answer}
 		
 	\end{question}
@@ -58,8 +59,30 @@ PID controllers are useful if the robot model is to complex or not known but on 
 		Create (max. 4) plots that compare the different control strategies and analyze the results. It is your choice how to illustrate your results. In your analysis you should include a discussion on the overall performance of each controller. Which controllers manage to go to the desired point, and how does the choice of a controller affects the behavior of the second joint of the pendulum? Additionally discuss which controller you would choose and why. The provided code is able to generate plot but feel free to modify it if you like. Points will be deducted for confusing plots. Do not forget to include your source code in your solutions.
 		
 \begin{answer}
-%TODO
-	
+	\begin{center}
+	\includegraphics[width=.32\linewidth]{figures/P-Regler0.pdf}
+	\includegraphics[width=.32\linewidth]{figures/PD-Regler0.pdf}\\
+	\includegraphics[width=.32\linewidth]{figures/PD-Grav-Regler0.pdf}
+	\includegraphics[width=.32\linewidth]{figures/PID-Regler0.pdf}
+	%\includegraphics[width=.4\linewidth]{figures/Model-Based-Regler1.pdf}
+\end{center}
+	The results show that neither the P-controller nor the PID-controller reach the second desired position in the given time frame, on the other hand, it's easy to see that P controller takes a long time to get into the right position, even more it oversteers its destination by way more than the others. The PD controller gets fast to near zero velocity but stays obviously a little bit under his desired position. That's due to gravity, to compensate that the PD-Gravity controller comes with an extra term of $g(q)$. Its velocity gets as fast to zero as PD but it reaches the destination point. PID is far slower than PD but does not have such high overshoot like P-control. In PID control the difference between PD-1 and PD-2 seem bigger than within the others. But nevertheless, we would choose PID for some tasks due to its slowness, parts of the robot won't wear off this quick. Sometimes a slower robot is better than nothing, but in some situations it's essential to have a quick responsive robot. In these scenarios we would recommend to use a PD-Gravity controller, because it quickly approaches its destination and has little overshoot.
+	%TODO: references
+%\begin{figure}[h]
+%\begin{subfigure}%{width=.5\linewidth}
+%	\centering
+%	\includegraphics[width=.5\linewidth]{figures/P-Regler0.pdf}
+%	\caption{Velocity Plot of a P-controller}
+%	\label{P-Control}
+%\end{subfigure}
+%\begin{subfigure}%{width=.5\linewidth}
+%	\centering
+%	\includegraphics[width=.5\linewidth]{figures/PD-Regler0.pdf}
+%	\caption{Velocity Plot of a PD-controller}
+%	\label{PD-Control}
+%\end{subfigure}
+%	\caption{Velocitiy Plots of different controller}
+%\end{figure}
 \end{answer}
 		
 	\end{question}
@@ -70,7 +93,14 @@ PID controllers are useful if the robot model is to complex or not known but on 
 		Repeat the same experiment but this time use the provided time-varying target trajectory. Create (max 4) plots that compare the different control strategies and analyze the results. In your analysis discuss the overall performance and which controllers track the desired trajectory nicely. Additionally discuss which controller you would choose and why.
 		
 \begin{answer}
-%TPDP
+	\begin{center}
+\includegraphics[width=.32\linewidth]{figures/P-traj0.pdf}
+\includegraphics[width=.32\linewidth]{figures/PD-traj0.pdf}\\
+\includegraphics[width=.32\linewidth]{figures/PID-traj0.pdf}
+\includegraphics[width=.32\linewidth]{figures/Model-Based-traj0.pdf}
+	\end{center}
+
+While tracking the trajectory, all controllers behave in a similar way. the all oscilate around the wanted curve. The difference between them is very small, so even the PD controller which performed very well in the last task can't trace the trajectory very well. This behaviour is actually pretty bad compared to a model based controller, which fits the curve nearly perfect after just a little over half a second.
 \end{answer}
 		
 	\end{question}
